@@ -1,0 +1,25 @@
+<template>
+  <div>
+    <a-table :columns="columns" :data-source="dataSource" row-key="id"></a-table>
+  </div>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        dataSource: [],
+        columns: $$cols$$
+      }
+    },
+    methods: {
+      getTableData() {
+
+      }
+    },
+    created() {
+      this.getTableData()
+    },
+  };
+</script>
+<style scoped lang='scss'>
+</style>

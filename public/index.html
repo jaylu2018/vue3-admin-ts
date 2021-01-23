@@ -1,17 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+      Please enable it to continue.</strong>
+  </noscript>
+  <script src="./js/vue/vue.global.js"></script>
+  <script src="./js/vue/vue-router.global.js"></script>
+  <script src="./js/vue/vuex.global.js"></script>
+  <div id="app">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      #app {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .loading-tip {
+        font-size: 40px;
+      }
+
+
+      .wrap {
+        perspective: 800px;
+        perspective-origin: 50% 100px;
+      }
+
+      .cube {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        transform-style: preserve-3d;
+        user-select: none;
+      }
+
+      .cube div {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        box-shadow: inset 5px 5px 10px rgb(0, 140, 255);
+        display: flex;
+        color: rgb(0, 140, 255);
+        font-size: 20px;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .back {
+        transform: translateZ(-100px) rotateY(180deg);
+      }
+
+      .right {
+        transform: rotateY(-270deg) translateX(100px);
+        transform-origin: top right;
+      }
+
+      .left {
+        transform: rotateY(270deg) translateX(-100px);
+        transform-origin: center left;
+      }
+
+      .top {
+        transform: rotateX(-90deg) translateY(-100px);
+        transform-origin: top center;
+      }
+
+      .bottom {
+        transform: rotateX(90deg) translateY(100px);
+        transform-origin: bottom center;
+      }
+
+      .front {
+        transform: translateZ(100px);
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotateY(0);
+        }
+
+        to {
+          transform: rotateY(360deg);
+        }
+      }
+
+      .cube {
+        animation: spin 5s infinite linear;
+      }
+    </style>
+    <div>
+      <div class="wrap">
+        <div class="cube">
+          <div class="front">Loading</div>
+          <div class="back">Loading</div>
+          <div class="top">Loading</div>
+          <div class="bottom">Loading</div>
+          <div class="left">Loading</div>
+          <div class="right">Loading</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>
